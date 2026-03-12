@@ -3,7 +3,7 @@
 ![Python](https://img.shields.io/badge/Language-Python-blue?style=for-the-badge&logo=python)
 ![Challenge](https://img.shields.io/badge/Codédex-Daily%20Challenge-purple?style=for-the-badge)
 ![Status](https://img.shields.io/badge/Progress-In%20Progress-orange?style=for-the-badge)
-![Days](https://img.shields.io/badge/Days-31%20Challenge-green?style=for-the-badge)
+![Days](https://img.shields.io/badge/Days-30%20Challenge-green?style=for-the-badge)
 
 ---
 
@@ -36,10 +36,29 @@ It’s about:
 
 ---
 
+## 📂 Repository Structure
+
 Each folder contains:
 
 - Problem solution
 - Clean Python implementation
+
+Example structure:
+
+Day-02  
+Day-03  
+Day-04  
+...  
+Day-31  
+
+---
+
+## 🔗 Connect with Me on Codédex
+
+Follow my learning journey on Codédex:
+
+👉 **Codédex Profile:**  
+https://www.codedex.io/@rennu
 
 ---
 
