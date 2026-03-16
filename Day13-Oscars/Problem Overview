@@ -1,0 +1,123 @@
+# 🏆 Oscars 2026 – Codédex Daily Challenge
+
+## 📌 Problem Overview
+After the **2026 Academy Awards**, a group of friends compares their predictions in an **Oscars Pool**. Each friend predicted the winners of four categories:
+
+- Best Picture  
+- Best Actor  
+- Best Actress  
+- Best Director  
+
+We are given:
+1. The **actual winners** of the awards.
+2. Each friend's **predicted winners**.
+
+The goal is to determine **which friend has the highest prediction accuracy**.
+
+Prediction accuracy:
+
+```
+accuracy = correct_predictions / total_predictions
+```
+
+Since everyone predicts **4 categories**, we only count the number of correct predictions.
+
+If **multiple friends have the same highest score**, return `"Tie"`.
+
+---
+
+## 📥 Input Format
+
+A list of lists where each inner list contains:
+
+```
+[friend_name, best_picture, best_actor, best_actress, best_director]
+```
+
+Example:
+
+```python
+predictions = [
+  ["@sonny", "One Battle After Another", "Michael B. Jordan", "Jessie Buckley", "Ryan Cooger"],
+  ["@brit896", "Marty Supreme", "Timothée Chalamet", "Jessie Buckley", "Josh Safdie"]
+]
+```
+
+---
+
+## 🏆 Actual Winners
+
+| Category | Winner |
+|--------|--------|
+| Best Picture | One Battle After Another |
+| Best Actor | Michael B. Jordan |
+| Best Actress | Jessie Buckley |
+| Best Director | Paul Thomas Anderson |
+
+---
+
+## 💡 Approach
+
+1. Store the **actual winners** in a list.
+2. Iterate through each friend's predictions.
+3. Compare their predictions with the actual winners.
+4. Count the number of **correct predictions**.
+5. Track the **highest score**.
+6. If more than one person has the same highest score, return `"Tie"`.
+
+---
+
+## 🧠 Idea
+
+The main idea is to **compare each predicted category with the actual winner** and count the matches.  
+By tracking the **maximum correct predictions**, we can determine the friend with the best accuracy.
+
+---
+
+## ⏱️ Time Complexity
+
+```
+O(n)
+```
+
+Where **n** is the number of friends.
+
+---
+
+## 🧾 Python Solution
+
+```python
+def oscar_pool(predictions):
+    winners = [
+        "One Battle After Another",
+        "Michael B. Jordan",
+        "Jessie Buckley",
+        "Paul Thomas Anderson"
+    ]
+
+    max_score = 0
+    winner_name = ""
+    tie = False
+
+    for p in predictions:
+        name = p[0]
+        score = 0
+
+        for i in range(4):
+            if p[i+1] == winners[i]:
+                score += 1
+
+        if score > max_score:
+            max_score = score
+            winner_name = name
+            tie = False
+        elif score == max_score:
+            tie = True
+
+    if tie:
+        return "Tie"
+
+    return winner_name
+```
+
+---
