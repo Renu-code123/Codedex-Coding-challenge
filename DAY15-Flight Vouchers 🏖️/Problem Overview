@@ -1,0 +1,60 @@
+# ✈️ Flight Vouchers 🏖️  
+### Codédex Daily Challenge – March 18, 2026
+
+March is Spring Break madness 🌴 — flights are overbooked, and airlines offer vouchers if you're willing to wait.
+
+Your goal is to **maximize value for your time** ⏳💸
+
+---
+
+## 🧠 Problem Statement
+
+You are given:
+
+- `vouchers`: List of voucher amounts (in dollars 💵)
+- `delays`: List of delay times (in hours ⏰)
+- `max_wait`: Maximum hours you're willing to wait
+
+### 🎯 Objective:
+Return the **index** of the option with the **highest dollars per hour** ratio.
+
+\[
+\text{value} = \frac{\text{voucher}}{\text{delay}}
+\]
+
+---
+
+## ⚠️ Constraints
+
+- Ignore options where `delay > max_wait`
+- If multiple options have the same value → return the **first**
+- If no valid options → return `-1`
+
+---
+
+## 💡 Approach
+
+- Loop through all options
+- Skip delays exceeding `max_wait`
+- Calculate `voucher / delay`
+- Track the maximum value and its index
+- Return the best index
+
+---
+
+## 💻 Solution (Python)
+
+```python
+def pick_voucher(vouchers, delays, max_wait):
+    best_index = -1
+    best_value = 0
+
+    for i in range(len(vouchers)):
+        if delays[i] <= max_wait:
+            value = vouchers[i] / delays[i]
+
+            if value > best_value:
+                best_value = value
+                best_index = i
+
+    return best_index
