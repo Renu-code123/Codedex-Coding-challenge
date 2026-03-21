@@ -1,0 +1,142 @@
+# 🐦 First Tweet — Codédex Daily Challenge
+
+## 📖 Problem Overview
+
+On March 21, 2006, Jack Dorsey posted the very first tweet:
+
+> *"just setting up my twttr"*
+
+At that time, Twitter had a strict **140-character limit**.
+
+In this problem, we simulate a simplified version of Twitter’s character counting system.
+
+---
+
+## 🧠 Problem Statement
+
+Given a tweet string, calculate how many characters are left out of 140.
+
+* Return **remaining characters** if within limit
+* Return **negative value** if it exceeds limit
+
+---
+
+## 📏 Rules
+
+* 👤 Words starting with `@` → count as **20 characters**
+* 🔗 Words starting with `http://` or `https://` → count as **23 characters**
+* 🔤 Other words → count normally using length
+* ␣ Spaces → count as **1 character between words**
+* 😀 Emojis → ignored for this challenge
+
+---
+
+## 💡 Core Idea
+
+Instead of counting every character directly:
+
+* Break the tweet into **words**
+* Apply **custom rules per word**
+* Add **spaces separately**
+* Subtract total from **140**
+
+👉 Think of it like a **budget system**:
+You start with 140 and "spend" characters as you process the tweet.
+
+---
+
+## ⚙️ Approach
+
+1. Split the tweet into words using `split()`
+2. Initialize `total = 0`
+3. Loop through each word:
+
+   * If it starts with `@` → add 20
+   * If it starts with `http://` or `https://` → add 23
+   * Else → add `len(word)`
+4. Add spaces:
+
+   * Number of spaces = `len(words) - 1`
+   * Use `max(0, len(words) - 1)` to handle edge case
+5. Return:
+
+   ```python
+   140 - total
+   ```
+
+---
+
+## ⚠️ Edge Cases
+
+* Empty string → return **140**
+* Single word → no spaces
+* Avoid negative space count
+
+---
+
+## 🧾 Python Solution
+
+```python
+def tweet_balance(tweet):
+    words = tweet.split()
+    total = 0
+    
+    for word in words:
+        if word.startswith('@'):
+            total += 20
+        elif word.startswith('http://') or word.startswith('https://'):
+            total += 23
+        else:
+            total += len(word)
+    
+    # Add spaces between words
+    total += max(0, len(words) - 1)
+    
+    return 140 - total
+```
+
+---
+
+## ⏱️ Complexity Analysis
+
+| Type             | Complexity |
+| ---------------- | ---------- |
+| Time Complexity  | O(n)       |
+| Space Complexity | O(n)       |
+
+* `n` = length of tweet
+
+---
+
+## 🧪 Example
+
+### Input
+
+```text
+"Check this https://example.com"
+```
+
+### Calculation
+
+* "Check" → 5
+* "this" → 4
+* URL → 23
+* Spaces → 2
+
+Total = 5 + 4 + 23 + 2 = 34
+
+### Output
+
+```text
+140 - 34 = 106
+```
+
+---
+
+## 🚀 Key Learnings
+
+* String parsing & tokenization
+* Handling special cases efficiently
+* Importance of edge cases
+* Real-world inspired constraints
+
