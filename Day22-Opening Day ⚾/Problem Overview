@@ -1,0 +1,52 @@
+# Opening Day – Longest Winning Streak
+
+## Problem Overview
+It is MLB Opening Day, and one of the key metrics fans follow is the winning streak — the number of consecutive games a team wins.
+
+There is one special case:
+- Rainouts ("R") do not count as a win or loss.
+- Rainouts do not break a winning streak.
+
+---
+
+## Problem Statement
+Given a list of game results, return the length of the longest winning streak.
+
+Each element in the list can be:
+- "W" → Win
+- "L" → Loss
+- "R" → Rainout (ignored, does not break streak)
+
+---
+
+## Approach
+We iterate through the list while maintaining two variables:
+
+- current_streak: counts the number of consecutive wins
+- max_streak: stores the maximum streak found so far
+
+### Logic
+- If the result is "W", increment current_streak
+- If the result is "L", reset current_streak to 0
+- If the result is "R", do nothing (streak continues)
+
+After each step, update max_streak.
+
+---
+
+## Code Implementation (Python)
+
+```python
+def streak_counter(games):
+    current_streak = 0
+    max_streak = 0
+
+    for game in games:
+        if game == "W":
+            current_streak += 1
+        elif game == "L":
+            current_streak = 0
+
+        max_streak = max(max_streak, current_streak)
+
+    return max_streak
