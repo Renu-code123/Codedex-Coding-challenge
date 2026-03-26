@@ -82,7 +82,7 @@ Day-31
 | Day 22 | 23-03-2026 | Cuddly Kittens 🐱 | Completed |
 | Day 23 | 24-03-2026 | Earthquake Anomaly 🌍 | Completed |
 | Day 24 | 25-03-2026 | Opening Day ⚾ | Completed |
-| Day 25| 26-03-2026 |![ Flatten Array 🪜](https://www.codedex.io/daily-challenge/2026-03-26) | Completed |
+| Day 25| 26-03-2026 |[ Flatten Array 🪜](https://www.codedex.io/daily-challenge/2026-03-26) | Completed |
 
 ---
 ## 🔗 Connect with Me on Codédex
